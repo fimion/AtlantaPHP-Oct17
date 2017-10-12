@@ -28,7 +28,7 @@
             @endif
 
             <div class="content" id="app">
-                    <project></project>
+                    <task-list></task-list>
             </div>
         </div>
         <script src="{{ URL::asset('js/app.js') }}"></script>

@@ -16,7 +16,8 @@ import Slide2 from './components/Slide2'
 import Slide3 from './components/Slide3'
 import Slide4 from './components/Slide4'
 import Slide5 from './components/Slide5'
-import Reveal from '../node_modules/reveal.js/js/reveal'
+import Reveal from 'reveal.js'
+import HLJS from 'highlight.js'
 
 export default {
   name: 'app',
@@ -28,6 +29,7 @@ export default {
       Slide5
   },
   mounted(){
+    HLJS.initHighlighting();
     Reveal.initialize();
   }
 }
@@ -36,5 +38,8 @@ export default {
 <style>
   @import '~reveal.js/css/reveal.css';
   @import '~reveal.js/css/theme/night.css';
-
+  @import '~highlight.js/styles/darcula.css';
+  .reveal pre code{
+    max-height: 500px;
+  }
 </style>

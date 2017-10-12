@@ -16,7 +16,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
-Vue.component('project',require('./components/Project.vue'));
+Vue.component('task-list',require('./components/Tasks.vue'));
 
 const app = new Vue({
     el: '#app'

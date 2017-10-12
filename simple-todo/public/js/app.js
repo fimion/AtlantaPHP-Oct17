@@ -895,7 +895,7 @@ window.Vue = __webpack_require__(36);
  */
 
 Vue.component('example', __webpack_require__(37));
-Vue.component('project', __webpack_require__(40));
+Vue.component('task-list', __webpack_require__(40));
 
 var app = new Vue({
   el: '#app'
@@ -42131,9 +42131,9 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\Project.vue"
+Component.options.__file = "resources\\assets\\js\\components\\Tasks.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Project.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Tasks.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -42142,9 +42142,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-05deae00", Component.options)
+    hotAPI.createRecord("data-v-016d3eb5", Component.options)
   } else {
-    hotAPI.reload("data-v-05deae00", Component.options)
+    hotAPI.reload("data-v-016d3eb5", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -42165,13 +42165,13 @@ var content = __webpack_require__(42);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(44)("a9a9be76", content, false);
+var update = __webpack_require__(44)("4442f04c", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-05deae00\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Project.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-05deae00\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Project.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-016d3eb5\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Tasks.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-016d3eb5\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Tasks.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -42189,7 +42189,7 @@ exports = module.exports = __webpack_require__(43)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -42554,53 +42554,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 var axios = window.axios;
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'project',
+  name: 'task-list',
   data: function data() {
     return {
-      msg: 'Projects',
-      projects: [],
-      newProject: {
+      msg: 'Tasks',
+      tasks: [],
+      newtask: {
         name: '',
-        slug: ''
+        description: ''
       },
-      localError: ''
+      localErrors: {}
     };
   },
 
   methods: {
-    fetchProjects: function fetchProjects() {
-      axios.get('/api/projects').then(this.updateProjects).catch(this.oopsie);
+    fetchTasks: function fetchTasks() {
+      axios.get('/api/tasks').then(this.updateTasks).catch(this.oopsie);
     },
-    updateProjects: function updateProjects(result) {
+    updateTasks: function updateTasks(result) {
       var data = result.data;
       console.log(data);
-      this.localError = '';
-      this.projects = data;
+      this.localErrors = [];
+      this.tasks = data;
     },
     oopsie: function oopsie(error) {
       console.dir(error);
       console.log(error.response);
-      this.localError = error.response.data;
+      this.localErrors = error.response.data;
     },
-    addProject: function addProject() {
-      axios.post('/api/projects', this.newProject).then(this.successProject).catch(this.oopsie);
+    addTask: function addTask() {
+      axios.post('/api/tasks', this.newtask).then(this.successTasks).catch(this.oopsie);
     },
-    successProject: function successProject(result) {
+    successTasks: function successTasks(result) {
       console.log(result);
-      var data = result.data,
-          newprojects = this.projects;
-      newprojects.push(data);
-      this.newProject.name = '';
-      this.newProject.slug = '';
-      this.projects.set(newprojects);
+      var data = result.data;
+      this.tasks.push(data.task);
+      this.newtask.name = '';
+      this.newtask.slug = '';
     }
   },
   mounted: function mounted() {
-    this.fetchProjects();
+    this.fetchTasks();
   }
 });
 
@@ -42618,9 +42619,11 @@ var render = function() {
     [
       _c("h1", [_vm._v(_vm._s(_vm.msg))]),
       _vm._v(" "),
-      _vm._l(_vm.projects, function(project) {
-        return _c("div", { key: project.slug }, [
-          _c("h2", [_vm._v(_vm._s(project.name))])
+      _vm._l(_vm.tasks, function(task) {
+        return _c("div", { key: task.id }, [
+          _c("h2", [_vm._v(_vm._s(task.name))]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(task.description))])
         ])
       }),
       _vm._v(" "),
@@ -42632,18 +42635,18 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.newProject.name,
-              expression: "newProject.name"
+              value: _vm.newtask.name,
+              expression: "newtask.name"
             }
           ],
           attrs: { type: "text", name: "name", placeholder: "Name" },
-          domProps: { value: _vm.newProject.name },
+          domProps: { value: _vm.newtask.name },
           on: {
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.newProject.name = $event.target.value
+              _vm.newtask.name = $event.target.value
             }
           }
         }),
@@ -42653,28 +42656,38 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.newProject.slug,
-              expression: "newProject.slug"
+              value: _vm.newtask.description,
+              expression: "newtask.description"
             }
           ],
-          attrs: { type: "text", name: "slug", placeholder: "Slug" },
-          domProps: { value: _vm.newProject.slug },
+          attrs: {
+            type: "text",
+            name: "description",
+            placeholder: "Description"
+          },
+          domProps: { value: _vm.newtask.description },
           on: {
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.newProject.slug = $event.target.value
+              _vm.newtask.description = $event.target.value
             }
           }
         }),
         _vm._v(" "),
-        _c("button", { on: { click: _vm.addProject } }, [_vm._v("Add Project")])
+        _c("button", { on: { click: _vm.addTask } }, [_vm._v("Add Task")])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "exc-message" }, [
-        _vm._v("\n        " + _vm._s(_vm.localError) + "\n    ")
-      ])
+      _c(
+        "div",
+        { staticClass: "exc-message" },
+        _vm._l(_vm.localErrors, function(error) {
+          return _c("div", [
+            _vm._v("\n            " + _vm._s(error) + "\n        ")
+          ])
+        })
+      )
     ],
     2
   )
@@ -42685,7 +42698,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-05deae00", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-016d3eb5", module.exports)
   }
 }
 

@@ -16,13 +16,13 @@ class TasksTableSeeder extends Seeder {
         DB::table('tasks')->delete();
 
         $tasks = array(
-            ['id' => 1, 'name' => 'Task 1', 'slug' => 'task-1', 'project_id' => 1, 'completed' => false, 'description' => 'My first task', 'created_at' => new DateTime, 'updated_at' => new DateTime],
-            ['id' => 2, 'name' => 'Task 2', 'slug' => 'task-2', 'project_id' => 1, 'completed' => false, 'description' => 'My first task', 'created_at' => new DateTime, 'updated_at' => new DateTime],
-            ['id' => 3, 'name' => 'Task 3', 'slug' => 'task-3', 'project_id' => 1, 'completed' => false, 'description' => 'My first task', 'created_at' => new DateTime, 'updated_at' => new DateTime],
-            ['id' => 4, 'name' => 'Task 4', 'slug' => 'task-4', 'project_id' => 1, 'completed' => true, 'description' => 'My second task', 'created_at' => new DateTime, 'updated_at' => new DateTime],
-            ['id' => 5, 'name' => 'Task 5', 'slug' => 'task-5', 'project_id' => 1, 'completed' => true, 'description' => 'My third task', 'created_at' => new DateTime, 'updated_at' => new DateTime],
-            ['id' => 6, 'name' => 'Task 6', 'slug' => 'task-6', 'project_id' => 2, 'completed' => true, 'description' => 'My fourth task', 'created_at' => new DateTime, 'updated_at' => new DateTime],
-            ['id' => 7, 'name' => 'Task 7', 'slug' => 'task-7', 'project_id' => 2, 'completed' => false, 'description' => 'My fifth task', 'created_at' => new DateTime, 'updated_at' => new DateTime],
+            ['id' => 1, 'name' => 'Task 1', 'completed' => false, 'description' => 'do the dishes', 'created_at' => new DateTime, 'updated_at' => new DateTime],
+            ['id' => 2, 'name' => 'Task 2', 'completed' => false, 'description' => 'do the laundry', 'created_at' => new DateTime, 'updated_at' => new DateTime],
+            ['id' => 3, 'name' => 'Task 3', 'completed' => false, 'description' => 'mow the lawn', 'created_at' => new DateTime, 'updated_at' => new DateTime],
+            ['id' => 4, 'name' => 'Task 4', 'completed' => true, 'description' => 'finish laravel + vue talk', 'created_at' => new DateTime, 'updated_at' => new DateTime],
+            ['id' => 5, 'name' => 'Task 5', 'completed' => true, 'description' => 'eat dinner', 'created_at' => new DateTime, 'updated_at' => new DateTime],
+            ['id' => 6, 'name' => 'Task 6', 'completed' => true, 'description' => 'make a thing', 'created_at' => new DateTime, 'updated_at' => new DateTime],
+            ['id' => 7, 'name' => 'Task 7', 'completed' => false, 'description' => 'something else', 'created_at' => new DateTime, 'updated_at' => new DateTime],
         );
 
         //// Uncomment the below to run the seeder

@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 use App\Task;
-use App\Project;
 use Illuminate\Http\Request;
 
 class ApiTasksController extends Controller
 {
     protected $rules = [
         'name' => ['required', 'min:3'],
-        'slug' => ['required'],
         'description' => ['required'],
     ];
     //
@@ -19,29 +17,40 @@ class ApiTasksController extends Controller
         return $tasks;
     }
 
-    public function show(Project $project, Task $task)
+    public function show(Task $task)
     {
-        return array('project'=>$project,'task'=>$task);
+        return array('task'=>$task);
     }
 
-    public function store(Project $project, Request $request)
+    public function create(Request $request)
     {
         $this->validate($request, $this->rules);
-        $input = Input::all();
-        $input['project_id'] = $project->id;
+        $input = $request->input();
         $task = Task::create( $input );
-        return array('project'=>$project,'task'=>$task);
+        return array('task'=>$task);
     }
 
-    public function update(Project $project, Task $task, Request $request)
+    public function store(Request $request)
     {
         $this->validate($request, $this->rules);
-        $input = array_except(Input::all(), '_method');
-        $task->update($input);
-        return array('project'=>$project,'task'=>$task);
+        $input = $request->input();
+        $task = new Task();
+        $task->name = $input['name'];
+        $task->description = $input['description'];
+        $task->save();
+        //task = Task::create( $input );
+        return array('task'=>$task);
     }
 
-    public function destroy(Project $project, Task $task)
+    public function update(Task $task, Request $request)
+    {
+        $this->validate($request, $this->rules);
+        $input = $request->input();
+        $task->update($input);
+        return array('task'=>$task);
+    }
+
+    public function destroy(Task $task)
     {
         return $task->delete();
     }
