@@ -85,7 +85,7 @@ export default {
             <p><button v-on:click="buttonClick()">Click Me!</button></p>
         </section>
         <section>
-            <p class="fragment">Let's Make a Todo App</p>
+            <p>Let's Make a Todo App</p>
         </section>
     </section>
 </template>

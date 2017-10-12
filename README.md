@@ -2,6 +2,15 @@
 
 > Laravel, Vue.js, and How to Hate Javascript Less
 
+## Relevant Links
+
+* [Alex Riviere](https://alex.party)
+* [Vue.Js](https://vuejs.org)
+* [Laravel](https://laravel.com)
+
+
+
+
 ## Build the slide show
 
 ``` bash

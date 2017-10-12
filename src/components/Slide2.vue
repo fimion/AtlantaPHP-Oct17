@@ -3,7 +3,7 @@
         <section>
             <h2>Who am I?</h2>
             <p class="fragment">Alex Riviere</p>
-            <p class="fragment"><span class="fragment">(Junior?)</span> Web Developer at Applied Imagination</p>
+            <p class="fragment">Web Developer and Support Manager at Applied Imagination</p>
             <p class="fragment">Former Career in Theatre and Entertainment</p>
             <p class="fragment">Also Likes Python</p>
         </section>
